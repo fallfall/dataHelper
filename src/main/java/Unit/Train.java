@@ -1,10 +1,25 @@
 package Unit;
 
 public class Train {
+	int start_city_id;
+	int end_city_id;
 	String train_no;
 	String start_station_name;
 	String end_station_name;
     int lishiValue;
+    
+	public int getStart_city_id() {
+		return start_city_id;
+	}
+	public void setStart_city_id(int start_city_id) {
+		this.start_city_id = start_city_id;
+	}
+	public int getEnd_city_id() {
+		return end_city_id;
+	}
+	public void setEnd_city_id(int end_city_id) {
+		this.end_city_id = end_city_id;
+	}
     
 	public String getTrain_no() {
 		return train_no;

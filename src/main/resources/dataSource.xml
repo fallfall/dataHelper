@@ -11,15 +11,15 @@
  
     <bean id="ObjectDataSource" class="com.alibaba.druid.pool.DruidDataSource"
         init-method="init" destroy-method="close">
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/TrainDB" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/TrainDB?characterEncoding=utf8" />
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
          <property name="username" value="root" />
         <property name="password" value="Bb399411" /> 
-        <property name="initialSize" value="10" />
-        <property name="maxActive" value="100" />
+        <!-- <property name="initialSize" value="1" /> -->
+        <property name="maxActive" value="240" />
        <property name="testOnBorrow" value="false" />
         <property name="maxWait" value="10000" />
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="timeBetweenEvictionRunsMillis" value="6000" />
         <property name="minIdle" value="1" />  
     </bean>
 </beans>

@@ -23,24 +23,23 @@ import Util.Function;
  */  
 public class HttpHander {  
        
-	
-	static String url="https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2017-05-04&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=SHH&purpose_codes=ADULT";
+	static String dateurl="https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=";
+	static String from_station= "&leftTicketDTO. from_station=";
+	static String to_station="&leftTicketDTO.to_station=";
+	static String end		= "&purpose_codes=ADULT";
+
     public static void main(String[] args) throws Exception {  
         HttpHander test=new HttpHander();
-        test.getTrain(url);
-       
-        
-    
     }  
       
-    public String getTrain(String path)throws Exception {
+    public String getTrain(String date,String start ,String endN)throws Exception {
     	init();
-    	URL url = new URL(path);  
+    	URL url = new URL(dateurl+date+from_station+start+to_station+endN+end);  
         url.openConnection();  
         InputStream in = url.openStream();  
         BufferedReader buf = new BufferedReader(new InputStreamReader(in));  
         String line = null;
-        String totalLine=null;
+        String totalLine="";
         while ((line = buf.readLine()) != null){  
             System.out.println(line);  
             totalLine+=line;
