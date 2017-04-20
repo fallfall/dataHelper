@@ -27,8 +27,10 @@ public class Analysis {
 		document = Jsoup.parse(html);
 		Element div = document.getElementById("form_cities2").getElementById("ul_list1");
 		Elements elements = div.getElementsByTag("li");
+		int id=1;
 		for (Element element : elements) {
-			dButils.add(element.attr("title") ,  element.attr("data"));
+			dButils.add(element.attr("title") ,  element.attr("data"),id);
+			id++;
 		}
 	}
 

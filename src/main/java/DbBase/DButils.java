@@ -44,14 +44,29 @@ public class DButils {
 
 	}
 
-	public void add(String name,String no) {
-		String sql=String.format("insert into  City_tb (cityName,cityNo) values (?,?)");
-		jdbctemplate.update(sql,new Object[]{name,no});
+	public void add(String name,String no,int id) {
+		String sql=String.format("insert into  City_tb (cityName,cityNo,id) values (?,?,?)");
+		jdbctemplate.update(sql,new Object[]{name,no,id});
 	}
 	
 	public void add(Train train) {
 		String sql=String.format("insert into  Train_tb (start_city_id,end_city_id,time,endStation,startStation,train) values (?,?,?,?,?,?)");
 		jdbctemplate.update(sql,new Object[]{train.getStart_city_id(),train.getEnd_city_id(),train.getLishiValue(),train.getEnd_station_name(),train.getStart_station_name(),train.getTrain_no()});
+	}
+	
+	public void clear() {
+		String sql1=String.format("delete from Train_tb ");
+		String sql2=String.format("delete from  City_tb");
+		String sq3=String.format("CREATE TABLE `City_tb` ("
+				+ "`id` int(11) unsigned NOT NULL  COMMENT '主键',"
+				+ "`cityName` varchar(200) NOT NULL,"
+				+ "`cityNo` varchar(200) NOT NULL,"
+				+ "PRIMARY KEY (`id`)"
+				+ ") ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=utf8 COMMENT='城市' ");
+		jdbctemplate.execute(sql1);
+		jdbctemplate.execute(sql2);
+//		jdbctemplate.execute(sq3);
+		
 	}
 
 }
