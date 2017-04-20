@@ -30,26 +30,18 @@ public class DButils {
 	
 	}
 	
-	public static void main(String[] args) {
-		context =new FileSystemXmlApplicationContext("src/main/resources/drds.xml");
-		jdbctemplate=(JdbcTemplate) context.getBean("jdbctemplate");
-		DButils dButils = new DButils();
-		Train train =new Train();
-		train.setStart_city_id(1);
-		train.setLishiValue(1);
-		train.setEnd_city_id(1);
-		train.setStart_station_name("hhhh");
-		train.setTrain_no("00000");
-		train.setEnd_station_name("111");
-		dButils.add(train);
+//	public static void main(String[] args) {
+//
+//		DButils dButils = new DButils();
+//
+//		Function.println(dButils.getCity().toString());
+//	
+//	}
 	
-	}
-	
-	public  City  getCity(String cityName) {
-		String sql=String.format("select * from  City_tb where  cityName=?");
-		java.util.List<Map<String, Object>> aList=jdbctemplate.queryForList(sql,new Object[]{cityName});
-		Function.println(aList.toString());
-		return null;
+	public  java.util.List<Map<String, Object>>  getCity() {
+		String sql=String.format("select * from  City_tb ");
+        return jdbctemplate.queryForList(sql,new Object[]{});
+
 	}
 
 	public void add(String name,String no) {
